@@ -1,0 +1,1 @@
+# qafalda-quality-coach
