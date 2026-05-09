@@ -1,3 +1,34 @@
+Metadata-Version: 2.4
+Name: qafalda-quality-coach
+Version: 1.0.0
+Summary: Um assistente em Python inspirado na Mafalda para tirar dúvidas sobre qualidade de teste.
+Home-page: https://github.com/suamontclair-sudo/qafalda-quality-coach
+Author: Seu Nome
+Author-email: seu.email@example.com
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: Flask>=2.3
+Requires-Dist: pytest>=7.0
+Dynamic: author
+Dynamic: author-email
+Dynamic: classifier
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: home-page
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary
+
 # QAfalda Quality Coach
 
 QAfalda é um assistente em Python inspirado na Mafalda, com objetivo de tirar dúvidas e incentivar quem estuda qualidade de teste. Ela foi criada para ajudar com conteúdos do syllabus BSQTB-CTFL 4.0 em uma interface minimalista e leve.
@@ -28,16 +59,10 @@ QAfalda é um assistente em Python inspirado na Mafalda, com objetivo de tirar d
 pip install -r requirements.txt
 ```
 
-### Instalar o pacote
-
-```bash
-pip install -e .
-```
-
 ### Executar interface gráfica ou texto
 
 ```bash
-qafalda
+python main.py
 ```
 
 - Se houver display, abre a janela Tkinter.
@@ -46,7 +71,7 @@ qafalda
 ### Executar versão web
 
 ```bash
-qafalda-web
+python web.py
 ```
 
 Depois, abra no navegador:

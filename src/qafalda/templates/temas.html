@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Temas — QAfalda</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="hero page-header">
+        <div>
+          <h1>TEMAS</h1>
+          <p>Explore os temas que conheço do BSQTB-CTFL 4.0. Clique para ver as explicações!</p>
+        </div>
+        <nav class="nav-links">
+          <a href="/" class="nav-link">Chat</a>
+          <a href="/dicas" class="nav-link">Dicas</a>
+          <a href="/quiz" class="nav-link">Quiz</a>
+        </nav>
+      </header>
+      <main>
+        <div class="cards-grid" id="cards-grid">
+          {% for item in knowledge %}
+          <div class="card" data-index="{{ loop.index0 }}">
+            <h3>{{ item.topic }}</h3>
+            <p>{{ item.question }}</p>
+            <details>
+              <summary>Ver resposta completa</summary>
+              <p>{{ item.answer }}</p>
+            </details>
+          </div>
+          {% endfor %}
+        </div>
+        <div class="load-more-container">
+          <button type="button" id="load-more" class="btn secondary">Ver mais</button>
+        </div>
+      </main>
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          const cards = Array.from(document.querySelectorAll('#cards-grid .card'));
+          const loadMoreButton = document.getElementById('load-more');
+          const step = 4;
+          let visibleCount = step;
+
+          function updateCards() {
+            cards.forEach((card, index) => {
+              card.style.display = index < visibleCount ? 'block' : 'none';
+            });
+            if (visibleCount >= cards.length) {
+              loadMoreButton.style.display = 'none';
+            }
+          }
+
+          loadMoreButton.addEventListener('click', function () {
+            visibleCount = Math.min(cards.length, visibleCount + step);
+            updateCards();
+          });
+
+          updateCards();
+        });
+      </script>
+    </div>
+  </body>
+</html>

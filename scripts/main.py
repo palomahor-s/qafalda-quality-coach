@@ -1,7 +1,7 @@
 import os
 
-from qafalda.cli import run_cli
-from qafalda.ui import run_app
+from src.qafalda.cli import run_cli
+from src.qafalda.ui import run_app
 
 
 def main() -> None:

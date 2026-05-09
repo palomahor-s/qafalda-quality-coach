@@ -1,4 +1,4 @@
-from qafalda.web import run_web
+from src.qafalda.web import run_web
 
 
 if __name__ == "__main__":

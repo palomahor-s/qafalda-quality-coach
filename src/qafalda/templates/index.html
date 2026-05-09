@@ -4,7 +4,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>QAfalda — Coach de Qualidade</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
   </head>
   <body>
@@ -32,6 +31,9 @@
                     <div>
                       <strong>QAfalda</strong>
                       <p>{{ message.content }}</p>
+                      <div class="use-case-actions">
+                        <button type="button" class="btn-small use-case-btn" onclick="showUseCase(this)">💡 Caso de uso real</button>
+                      </div>
                     </div>
                   </div>
                 {% else %}
@@ -51,6 +53,14 @@
               </div>
             {% endif %}
           </div>
+          <div class="suggestions-bar" id="suggestions-bar">
+            <p>📚 Quer explorar algum desses tópicos?</p>
+            <div class="topic-list">
+              {% for topic in suggestions %}
+              <button type="button" class="topic-chip" onclick="setTopic(event, '{{ topic }}')">{{ topic }}</button>
+              {% endfor %}
+            </div>
+          </div>
           <form method="post" class="prompt-form" id="chat-form">
             <input
               id="chat-input"
@@ -64,56 +74,26 @@
           </form>
         </section>
       </main>
-      <div class="mascot-widget" id="mascot-widget" title="Clique para ver sugestões de assunto">
-        <div class="glasses-icon" aria-hidden="true">
-          <span class="glass left"></span>
-          <span class="bridge"></span>
-          <span class="glass right"></span>
-        </div>
-        <div class="mascot-menu" id="mascot-menu">
-          {% for topic in suggestions %}
-          <button type="button" class="topic-chip" onclick="chooseTopic(event, {{ topic|tojson }})">{{ topic }}</button>
-          {% endfor %}
-        </div>
-      </div>
     </div>
     <script>
-      // Scroll to bottom of chat messages
-      const chatMessages = document.getElementById('chat-messages');
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-
-      const mascotWidget = document.getElementById('mascot-widget');
-      const mascotMenu = document.getElementById('mascot-menu');
-      mascotWidget.addEventListener('click', () => {
-        const isOpen = mascotWidget.classList.toggle('open');
-        if (isOpen) {
-          mascotMenu.style.opacity = '1';
-          mascotMenu.style.transform = 'translateY(0)';
-          mascotMenu.style.pointerEvents = 'auto';
-        } else {
-          mascotMenu.style.opacity = '0';
-          mascotMenu.style.transform = 'translateY(10px)';
-          mascotMenu.style.pointerEvents = 'none';
-        }
-      });
-
-      document.addEventListener('click', (event) => {
-        if (!mascotWidget.contains(event.target)) {
-          mascotWidget.classList.remove('open');
-          mascotMenu.style.opacity = '0';
-          mascotMenu.style.transform = 'translateY(10px)';
-          mascotMenu.style.pointerEvents = 'none';
-        }
-      });
-
-      function chooseTopic(event, topic) {
-        event.stopPropagation();
+      function setTopic(event, topic) {
+        event.preventDefault();
         const input = document.getElementById('chat-input');
         if (input) {
           input.value = topic;
           input.focus();
         }
       }
+
+      function showUseCase(button) {
+        const message = button.closest('.bubble').querySelector('p')?.textContent || '';
+        alert('📋 Caso de uso real:\n\n' + message + '\n\n(Você pode aplicar esse conceito em seus projetos de teste!)');
+      }
+
+      // Scroll to bottom of chat messages
+      const chatMessages = document.getElementById('chat-messages');
+      chatMessages.scrollTop = chatMessages.scrollHeight;
     </script>
   </body>
 </html>
+

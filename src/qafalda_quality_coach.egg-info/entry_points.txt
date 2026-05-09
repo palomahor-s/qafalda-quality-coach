@@ -1,0 +1,3 @@
+[console_scripts]
+qafalda = qafalda.main:main
+qafalda-web = qafalda.web_entry:run_web

@@ -8,10 +8,9 @@
   </head>
   <body>
     <div class="page">
-      <header class="hero">
+      <header class="hero page-header">
         <div>
-          <div class="mafalda-avatar"></div>
-          <h1>Dica do Dia da QAfalda</h1>
+          <h1>DICAS</h1>
           <p>Uma dica inspiradora sobre qualidade de teste para você se motivar!</p>
         </div>
         <nav class="nav-links">
@@ -23,10 +22,13 @@
       <main>
         <section class="chat-card">
           <div class="bubble bot">
-            <strong>QAfalda</strong>
-            <p><strong>{{ dica.topic }}</strong></p>
-            <p>{{ dica.question }}</p>
-            <p>{{ dica.answer }}</p>
+            <img src="{{ url_for('static', filename='images/mafalda.jpg') }}" alt="Mafalda" class="bubble-avatar" />
+            <div>
+              <strong>QAfalda</strong>
+              <p><strong>{{ dica.topic }}</strong></p>
+              <p>{{ dica.question }}</p>
+              <p>{{ dica.answer }}</p>
+            </div>
           </div>
           <div class="actions">
             <a href="/dicas" class="btn">Nova dica</a>

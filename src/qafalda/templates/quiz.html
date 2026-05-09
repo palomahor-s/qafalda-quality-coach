@@ -8,10 +8,9 @@
   </head>
   <body>
     <div class="page">
-      <header class="hero">
+      <header class="hero page-header">
         <div>
-          <div class="mafalda-avatar"></div>
-          <h1>Quiz da QAfalda</h1>
+          <h1>QUIZ</h1>
           <p>Vamos testar seus conhecimentos sobre qualidade de software? É só escolher a resposta certa!</p>
         </div>
         <nav class="nav-links">
@@ -24,8 +23,11 @@
         <section class="chat-card">
           {% if feedback %}
           <div class="bubble bot">
-            <strong>QAfalda</strong>
-            <p>{{ feedback }}</p>
+            <img src="{{ url_for('static', filename='images/mafalda.jpg') }}" alt="Mafalda" class="bubble-avatar" />
+            <div>
+              <strong>QAfalda</strong>
+              <p>{{ feedback }}</p>
+            </div>
           </div>
           <div class="actions">
             <a href="/quiz" class="btn">Próxima pergunta</a>
@@ -33,8 +35,11 @@
           </div>
           {% else %}
           <div class="bubble bot">
-            <strong>QAfalda</strong>
-            <p>{{ question }}</p>
+            <img src="{{ url_for('static', filename='images/mafalda.jpg') }}" alt="Mafalda" class="bubble-avatar" />
+            <div>
+              <strong>QAfalda</strong>
+              <p>{{ question }}</p>
+            </div>
           </div>
           <form method="post" class="quiz-form">
             <input type="hidden" name="question" value="{{ question }}" />
